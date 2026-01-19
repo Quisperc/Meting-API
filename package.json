@@ -4,6 +4,7 @@
   "description": "",
   "main": "node.js",
   "scripts": {
+    "build": "node esbuild.config.js",
     "build:all": "node esbuild.config.js",
     "start:node": "node node.js",
     "start:deno": "deno run --allow-net --allow-env dist/deno.js",
