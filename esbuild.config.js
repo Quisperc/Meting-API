@@ -52,7 +52,7 @@ await esbuild.build({
             include: new RegExp("src/providers/netease/crypto\.js"),
             pattern: [
                 ["import crypto from 'crypto-browserify'", "import crypto from 'https://esm.sh/crypto-browserify@3.12.0'"],
-                ["import { Buffer } from 'buffer/index.js'","import { Buffer } from 'https://esm.sh/buffer@6.0.3'"]
+                ["import { Buffer } from 'buffer/index.js'", "import { Buffer } from 'https://esm.sh/buffer@6.0.3'"]
             ]
         }),
         resolve({
@@ -67,3 +67,24 @@ await esbuild.build({
     ],
     // minify: true,
 });
+
+// EdgeOne Pages - 输出到 functions/_worker.js
+await esbuild.build({
+    entryPoints: ['./edgeone.js'],
+    bundle: true,
+    format: 'esm',
+    outfile: './functions/_worker.js',
+    external: [],
+    plugins: [
+        resolve({
+            crypto: 'crypto-browserify'
+        }),
+        NodeGlobalsPolyfillPlugin({
+            process: true,
+            buffer: true,
+        }),
+        NodeModulesPolyfillPlugin(),
+    ],
+    minify: true,
+});
+
