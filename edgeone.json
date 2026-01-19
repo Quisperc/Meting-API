@@ -1,0 +1,19 @@
+{
+  "build": {
+    "command": "node esbuild.config.js",
+    "output": "dist"
+  },
+  "functions": {
+    "directory": "functions"
+  },
+  "env": {
+    "OVERSEAS": "1",
+    "RUNTIME": "edgeone"
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/functions/index"
+    }
+  ]
+}
