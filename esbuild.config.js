@@ -67,24 +67,3 @@ await esbuild.build({
     ],
     // minify: true,
 });
-
-// EdgeOne Pages - 输出到 functions/[[path]].js (catch-all 路由)
-await esbuild.build({
-    entryPoints: ['./edgeone.js'],
-    bundle: true,
-    format: 'esm',
-    outfile: './functions/[[path]].js',
-    external: [],
-    plugins: [
-        resolve({
-            crypto: 'crypto-browserify'
-        }),
-        NodeGlobalsPolyfillPlugin({
-            process: true,
-            buffer: true,
-        }),
-        NodeModulesPolyfillPlugin(),
-    ],
-    minify: true,
-});
-
