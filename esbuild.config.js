@@ -68,12 +68,12 @@ await esbuild.build({
     // minify: true,
 });
 
-// EdgeOne Pages - 输出到 functions/_worker.js
+// EdgeOne Pages - 输出到 functions/[[path]].js (catch-all 路由)
 await esbuild.build({
     entryPoints: ['./edgeone.js'],
     bundle: true,
     format: 'esm',
-    outfile: './functions/_worker.js',
+    outfile: './functions/[[path]].js',
     external: [],
     plugins: [
         resolve({
