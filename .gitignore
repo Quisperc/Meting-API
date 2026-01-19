@@ -2,3 +2,5 @@ node_modules
 dist
 .vscode
 .vercel
+functions/_worker.js
+build_output.txt
