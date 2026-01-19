@@ -2,6 +2,3 @@ node_modules
 dist
 .vscode
 .vercel
-functions/[[path]].js
-build_output.txt
-
